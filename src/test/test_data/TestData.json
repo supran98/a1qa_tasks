@@ -1,0 +1,17 @@
+{
+  "Global": {
+    "base_url": "https://jsonplaceholder.typicode.com"
+  },
+  "GetPostTest": {
+    "post_number": "/99"
+  },
+  "InvalidPostTest": {
+    "post_number": "/150"
+  },
+  "GetUserTest": {
+    "user_number": "/5"
+  },
+  "PostRequestTest": {
+    "user_id": "1"
+  }
+}

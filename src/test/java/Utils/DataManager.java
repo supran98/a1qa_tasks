@@ -3,7 +3,6 @@ package Utils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import java.io.*;
-import java.util.Random;
 
 public class DataManager {
     private static final String filename = "src/test/test_data/TestData.json";
@@ -39,29 +38,5 @@ public class DataManager {
         catch (IOException e) {
         }
         return null;
-    }
-    public static String getRandomString() {
-        int leftLimit = 97; // letter 'a'
-        int rightLimit = 122; // letter 'z'
-        int targetStringLength = 10;
-        Random random = new Random();
-        StringBuilder buffer = new StringBuilder(targetStringLength);
-        for (int i = 0; i < targetStringLength; i++) {
-            int randomLimitedInt = leftLimit + (int)
-                    (random.nextFloat() * (rightLimit - leftLimit + 1));
-            buffer.append((char) randomLimitedInt);
-        }
-        return buffer.toString();
-    }
-    public enum EndPoints {
-        POSTS("/posts"), USERS("/users"), TYPE_JSON("application/json; charset=utf-8");
-
-        private String endpoint;
-        EndPoints(String str) {
-            endpoint = str;
-        }
-        public String get() {
-            return endpoint;
-        }
     }
 }

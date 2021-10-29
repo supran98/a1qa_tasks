@@ -1,6 +1,4 @@
-import Utils.ApiUtils;
-import Utils.DataManager;
-import Utils.JsonUtils;
+import Utils.*;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -9,14 +7,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GetUsersTest {
-    private String url = DataManager.getTestData("Global.base_url") + DataManager.EndPoints.USERS.get();
+    private String url = DataManager.getTestData("Global.base_url") + Enums.EndPoints.USERS.get();
     Map<String, Object> user = new HashMap<>();
-    private final String user_data = "src/test/test_data/User5.json";
+    private final String user_data = ConfigManager.getConfigData("test_data_dir") + "/User5.json";
     @Test
     public void getUsers() {
         ApiUtils.get(url);
-        Assert.assertEquals(ApiUtils.getStatusCode(), 200, "Unexpected status code\n");
-        Assert.assertEquals(ApiUtils.getContentType(), DataManager.EndPoints.TYPE_JSON.get(), "Unexpected content type\n");
+        Assert.assertEquals(ApiUtils.getStatusCode(), Enums.StatusCodes.OK.get(), "Unexpected status code\n");
+        Assert.assertEquals(ApiUtils.getContentType(), Enums.ContentTypes.TYPE_JSON.get(), "Unexpected content type\n");
 
         ApiUtils.getWithParams(url, user);
         JSONArray response_arr = JsonUtils.getJsonArray(ApiUtils.getResponseBody());

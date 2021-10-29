@@ -1,5 +1,8 @@
 package Utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -33,6 +36,26 @@ public class JsonUtils {
         }
         catch (ParseException e) {
             return null;
+        }
+    }
+    public static String serialize(Object json) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
+        }
+        catch (JsonProcessingException e) {
+        }
+        return null;
+    }
+    public static boolean equals(String json1_str, String json2_str) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode node1 = objectMapper.readTree(json1_str);
+            JsonNode node2 = objectMapper.readTree(json2_str);
+            return node1.equals(node2);
+        }
+        catch (JsonProcessingException e) {
+            return false;
         }
     }
 }

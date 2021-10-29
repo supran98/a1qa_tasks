@@ -21,7 +21,7 @@ public class ApiUtils {
         JSONObject obj = new JSONObject(data);
 
         response = given()
-                   .header("Content-type", DataManager.EndPoints.TYPE_JSON.get())
+                   .header("Content-type", Enums.ContentTypes.TYPE_JSON.get())
                    .and()
                    .body(obj.toJSONString())
                    .when()

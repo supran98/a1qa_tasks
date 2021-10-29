@@ -1,6 +1,4 @@
-import Utils.ApiUtils;
-import Utils.DataManager;
-import Utils.JsonUtils;
+import Utils.*;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -8,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PostRequestTest {
-    private final String url = DataManager.getTestData("Global.base_url") + DataManager.EndPoints.USERS.get();
+    private final String url = DataManager.getTestData("Global.base_url") + Enums.EndPoints.POSTS.get();
     private final Map<String, Object> map = new HashMap<>();
-    private final String title = DataManager.getRandomString();
-    private final String body = DataManager.getRandomString();
+    private final String title = StringUtils.getRandomString();
+    private final String body = StringUtils.getRandomString();
     private final String user_id = DataManager.getTestData("PostRequestTest.user_id");
 
     @Test
@@ -19,7 +17,7 @@ public class PostRequestTest {
         ApiUtils.post(url, map);
 
         String response = ApiUtils.getResponseBody();
-        Assert.assertEquals(ApiUtils.getStatusCode(), 201, "Unexpected status code\n");
+        Assert.assertEquals(ApiUtils.getStatusCode(), Enums.StatusCodes.CREATED.get(), "Unexpected status code\n");
         Assert.assertEquals(JsonUtils.getJsonValue("title", response), title, "Response value doesn't match expected\n");
         Assert.assertEquals(JsonUtils.getJsonValue("body", response), body, "Response value doesn't match expected\n");
         Assert.assertEquals(JsonUtils.getJsonValue("userId", response), user_id, "Response value doesn't match expected\n");

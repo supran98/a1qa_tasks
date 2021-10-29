@@ -1,18 +1,19 @@
 import Utils.ApiUtils;
 import Utils.DataManager;
+import Utils.Enums;
 import Utils.JsonUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class GetPostTest {
-    private final String url = DataManager.getTestData("Global.base_url") + DataManager.EndPoints.POSTS.get() +
+    private final String url = DataManager.getTestData("Global.base_url") + Enums.EndPoints.POSTS.get() +
             DataManager.getTestData("GetPostTest.post_number");
-    private final int expected_id = 99;
-    private final int expected_user_id = 10;
+    private final int expected_id = Integer.parseInt(DataManager.getTestData("GetPostTest.expected_id"));
+    private final int expected_user_id = Integer.parseInt(DataManager.getTestData("GetPostTest.expected_user_id"));
     @Test
     public void getPost() {
         ApiUtils.get(url);
-        Assert.assertEquals(ApiUtils.getStatusCode(), 200, "Unexpected status code\n");
+        Assert.assertEquals(ApiUtils.getStatusCode(), Enums.StatusCodes.OK.get(), "Unexpected status code\n");
 
         int user_id = Integer.parseInt(JsonUtils.getJsonValue("userId", ApiUtils.getResponseBody()));
         Assert.assertEquals(user_id, expected_user_id, "Unexpected user id\n");

@@ -3,13 +3,18 @@
     "base_url": "https://jsonplaceholder.typicode.com"
   },
   "GetPostTest": {
-    "post_number": "/99"
+    "post_number": "/99",
+    "expected_id": "99",
+    "expected_user_id": "10"
   },
   "InvalidPostTest": {
     "post_number": "/150"
   },
   "GetUserTest": {
     "user_number": "/5"
+  },
+  "GetUsersTest": {
+    "user_id": "5"
   },
   "PostRequestTest": {
     "user_id": "1"

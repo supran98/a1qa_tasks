@@ -1,0 +1,21 @@
+{
+  "Api": {
+    "base_api_uri": "https://api.vk.com",
+    "api_version": "5.103"
+  },
+  "AuthTest": {
+    "auth_url": "https://vk.com"
+  },
+  "TestUser": {
+    "name": "Иван Иванов",
+    "user_id": "627657327",
+    "access_token": "23b7f396cd2e5ac6933196a23e5efc5734caa0f120c54bf0ba3a3d0c8f08aacc58ddec81bcaf47808fb71",
+    "homepage": "https://vk.com/id627657327"
+  },
+  "TestUser2": {
+    "name": "Александр Вокнарпус",
+    "user_id": "684354949",
+    "access_token": "1ccbc09aec353bc0f3f8113d914df870dfa970e7bacf648431e4cdd6d2cd1e08eae3723a2e0b5bb202903",
+    "homepage": "https://vk.com/id684354949"
+  }
+}

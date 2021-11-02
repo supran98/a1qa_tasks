@@ -31,7 +31,7 @@ public class Post {
         return author_label.getText();
     }
     public String getText() {
-        String child_xpath = "//div[@class = 'wall_post_text']";
+        String child_xpath = String.format("//div[@id = 'wpt%s_%s']", user_id, post_id);
         WebElement text_label = BrowserUtils.getDriver().findElement(By.xpath(parent_xpath + child_xpath));
         return text_label.getText();
     }

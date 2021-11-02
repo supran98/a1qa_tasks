@@ -1,7 +1,6 @@
 package Utils;
 
 import org.json.simple.JSONArray;
-
 import java.util.Random;
 
 public class StringUtils {

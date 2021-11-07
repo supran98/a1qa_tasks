@@ -24,6 +24,7 @@ public class BrowserUtils {
             driver = new FirefoxDriver();
         }
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS) ;
+
     }
     public static void get(String url) {
         driver.get(url);

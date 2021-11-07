@@ -1,29 +1,20 @@
 package UI.WebElements;
 
 import Utils.BrowserUtils;
-import Utils.Config;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import usermodel.User;
 
 public class Post {
-    private WebElement post;
     private final String post_xpath_body = "//div[@id = 'post%s_%s']";
     private final String parent_xpath;
-    private final int default_uid = Integer.parseInt(Config.get("TestUser2.user_id"));
     private final int user_id;
     private final int post_id;
 
-    public Post(int user_id, int post_id) {
-        this.user_id = user_id;
-        this.post_id = post_id;
-        parent_xpath = String.format(post_xpath_body, user_id, post_id);
-        post = BrowserUtils.getDriver().findElement(By.xpath(parent_xpath));
-    }
     public Post(int post_id) {
         this.post_id = post_id;
-        this.user_id = default_uid;
+        this.user_id = User.getUserId();
         parent_xpath = String.format(post_xpath_body, user_id, post_id);
-        post = BrowserUtils.getDriver().findElement(By.xpath(parent_xpath));
     }
     public String getAuthorName() {
         String child_xpath = "//a[@class = 'author']";

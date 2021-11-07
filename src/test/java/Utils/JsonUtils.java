@@ -2,8 +2,8 @@ package Utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.JsonPath;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -17,17 +17,6 @@ public class JsonUtils {
             return null;
         }
     }
-    public static String getJsonValue(String key, String json_str) {
-        try {
-            JSONParser parser = new JSONParser();
-            JSONObject json = (JSONObject) parser.parse(json_str);
-
-            return json.get(key).toString();
-        }
-        catch (ParseException | NullPointerException e) {
-            return null;
-        }
-    }
     public static String serialize(Object json) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -36,5 +25,8 @@ public class JsonUtils {
         catch (JsonProcessingException e) {
         }
         return null;
+    }
+    public static String getJsonValue(String json, String jsonpath) {
+        return JsonPath.parse(json).read(jsonpath).toString();
     }
 }

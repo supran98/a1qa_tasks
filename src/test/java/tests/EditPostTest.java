@@ -10,8 +10,6 @@ public class EditPostTest extends BaseTest{
     private final String update = StringUtils.getRandomString(Config.getProperty("strings"));
     @Test
     public void editPost() {
-        BrowserUtils.get(Config.get("TestUser2.homepage"));
-
         File photo = new File(Config.getProperty("test_image"));
         int photo_id = VkApiUtils.editPost(post.getId(), update, photo);
         Image image = new Image(post.getId());

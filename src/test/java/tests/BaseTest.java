@@ -3,8 +3,8 @@ package tests;
 import UI.WebElements.Post;
 import UI.WebPages.HomePage;
 import Utils.BrowserUtils;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
+import usermodel.User;
 
 public class BaseTest {
     protected static Post post;
@@ -17,4 +17,9 @@ public class BaseTest {
     protected void tearDown() {
         BrowserUtils.quitDriver();
     }
+    @BeforeClass
+    protected void openUserPage() {
+        BrowserUtils.get(User.getHomepageUrl());
+    }
+
 }

@@ -6,13 +6,13 @@
   "AuthTest": {
     "auth_url": "https://vk.com"
   },
-  "TestUser": {
+  "627657327": {
     "name": "Иван Иванов",
     "user_id": "627657327",
     "access_token": "23b7f396cd2e5ac6933196a23e5efc5734caa0f120c54bf0ba3a3d0c8f08aacc58ddec81bcaf47808fb71",
     "homepage": "https://vk.com/id627657327"
   },
-  "TestUser2": {
+  "684354949": {
     "name": "Александр Вокнарпус",
     "user_id": "684354949",
     "access_token": "761ef2dee3485fcf8913f1deb12c0bf93610f5b1b33397a7788f47e5cfd90fb8e37d8ac30215d802fbede",

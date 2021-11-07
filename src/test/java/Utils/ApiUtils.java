@@ -1,6 +1,5 @@
 package Utils;
 
-import com.jayway.jsonpath.JsonPath;
 import io.restassured.http.ContentType;
 import java.io.File;
 import static io.restassured.RestAssured.given;
@@ -32,9 +31,5 @@ public class ApiUtils {
         return given().multiPart("photo", photo).multiPart("server", server).multiPart("hash", hash)
                 .when().post(uri)
                 .then().extract().response().asString();
-    }
-
-    public static String getResponseValue(String json, String jsonpath) {
-        return JsonPath.parse(json).read(jsonpath).toString();
     }
 }

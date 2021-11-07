@@ -3,7 +3,6 @@
 <suite name="All Test Suite">
     <test name="vktests">
         <classes>
-            <class name="tests.BaseTest"/>
             <class name="tests.AuthTest"/>
             <class name="tests.PostOnWallTest"/>
             <class name="tests.EditPostTest"/>

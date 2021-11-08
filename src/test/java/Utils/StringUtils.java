@@ -17,8 +17,8 @@ public class StringUtils {
         }
         return buffer.toString();
     }
-    public static String getRandomString(String filename) {
-        String data = Utils.readFile(filename);
+    public static String getRandomStringFromJson(String filename) {
+        String data = FileUtils.readFile(filename);
         JSONArray arr = JsonUtils.getJsonArray(data);
         final int MAX = arr.size() - 1;
         int rand_num = (int) (Math.random() * MAX);

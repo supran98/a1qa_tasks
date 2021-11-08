@@ -6,12 +6,12 @@ import java.io.*;
 import java.util.Properties;
 
 public class Config {
-    private static final String properties_file = "src/test/resources/data.properties";
-    private static final String data_file = "src/test/resources/TestData.json";
+    private static final String default_props_file = "src/test/resources/data.properties";
+    private static final String default_data_file = "src/test/resources/TestData.json";
 
-    public static String getProperty(String property) {
+    public static String getProperty(String property, String filename) {
         Properties props = new Properties();
-        try (InputStream input = new FileInputStream(properties_file)) {
+        try (InputStream input = new FileInputStream(filename)) {
             props.load(input);
             return props.getProperty(property);
         }
@@ -19,7 +19,11 @@ public class Config {
             return null;
         }
     }
-    private static String getData(String key, String filename) {
+    public static String getProperty(String property) {
+        return getProperty(property, default_props_file);
+    }
+    
+    public static String get(String key, String filename) {
         try {
             JSONParser parser = new JSONParser();
             Object obj = parser.parse(new FileReader(filename));
@@ -35,10 +39,7 @@ public class Config {
             return null;
         }
     }
-    public static String get(String key, String filename) {
-        return getData(key, filename);
-    }
     public static String get(String key) {
-        return getData(key, data_file);
+        return get(key, default_data_file);
     }
 }

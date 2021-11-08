@@ -2,10 +2,10 @@ package usermodel;
 
 import Utils.Config;
 import Utils.JsonUtils;
-import Utils.Utils;
+import Utils.FileUtils;
 
 public class User {
-    private static final String jsondata = Utils.readFile(Config.getProperty("test_data"));
+    private static final String jsondata = FileUtils.readFile(Config.getProperty("test_data"));
     private static final int user_id = Integer.parseInt(Config.getProperty("user"));
     private static final String name = JsonUtils.getJsonValue(jsondata, "$." + user_id + ".name");
     private static final String access_token = JsonUtils.getJsonValue(jsondata, "$." + user_id + ".access_token");

@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Utils {
+public class FileUtils {
     public static String readFile(String filename) {
         try(BufferedReader br = new BufferedReader(new FileReader(filename))) {
             StringBuilder sb = new StringBuilder();
@@ -18,6 +18,7 @@ public class Utils {
             return sb.toString();
         }
         catch (IOException e) {
+            e.printStackTrace();
         }
         return null;
     }

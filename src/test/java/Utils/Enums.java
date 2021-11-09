@@ -23,4 +23,27 @@ public class Enums {
             return type;
         }
     }
+    public enum Paths {
+        RESOURCES("src/test/resources/");
+
+        private String path;
+        Paths(String p) {
+            path = p;
+        }
+        public String get() {
+            return path;
+        }
+    }
+    public enum Data {
+        PROPS("data.properties"),
+        JSONDATA("TestData.json");
+
+        private String filename;
+        Data(String f) {
+            filename = f;
+        }
+        public String get() {
+            return filename;
+        }
+    }
 }

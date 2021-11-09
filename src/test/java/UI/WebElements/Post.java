@@ -11,7 +11,6 @@ public class Post {
     private final String post_content_xpath = "//div[@id = 'wpt%s_%s']";
     private final String comment_author_lbl = "//div[@id = 'post%s_%s']//div[@class = 'reply_author']//a";
     private final String like_btn_xpath = "//div[@id = 'post%s_%s']//div[@class = 'PostButtonReactions__icon ']";
-    private final String show_comments_btn = "//span[@class = 'js-replies_next_label']";
     private final String parent_xpath;
     private final int user_id;
     private final int post_id;

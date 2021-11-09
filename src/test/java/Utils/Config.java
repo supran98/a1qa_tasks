@@ -6,8 +6,8 @@ import java.io.*;
 import java.util.Properties;
 
 public class Config {
-    private static final String default_props_file = "src/test/resources/data.properties";
-    private static final String default_data_file = "src/test/resources/TestData.json";
+    private static final String default_props_file = Enums.Paths.RESOURCES.get() + Enums.Data.PROPS.get();
+    private static final String default_data_file = Enums.Paths.RESOURCES.get() + Enums.Data.JSONDATA.get();
 
     public static String getProperty(String property, String filename) {
         Properties props = new Properties();

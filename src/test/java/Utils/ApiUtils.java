@@ -1,5 +1,6 @@
 package Utils;
 
+import Utils.Enums.StatusCodes;
 import io.restassured.http.ContentType;
 import java.io.File;
 import static io.restassured.RestAssured.given;
@@ -8,7 +9,7 @@ public class ApiUtils {
     public static String get(String uri) {
         return given().contentType(ContentType.JSON)
                 .when().get(uri)
-                .then().statusCode(Enums.StatusCodes.OK.get())
+                .then().statusCode(StatusCodes.OK.get())
                 .extract().response().asString();
     }
     public static String post(String uri) {

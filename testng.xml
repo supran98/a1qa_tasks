@@ -2,13 +2,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test name="vktests">
-        <groups>
-            <run>
-                <include name="afterAuth"/>
-                <include name="auth"/>
-            </run>
-        </groups>
         <classes>
+            <class name="tests.BaseTest"/>
             <class name="tests.VkTest"/>
         </classes>
     </test>

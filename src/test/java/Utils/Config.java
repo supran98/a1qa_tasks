@@ -1,13 +1,15 @@
 package Utils;
 
+import Utils.Enums.Data;
+import Utils.Enums.Paths;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import java.io.*;
 import java.util.Properties;
 
 public class Config {
-    private static final String default_props_file = Enums.Paths.RESOURCES.get() + Enums.Data.PROPS.get();
-    private static final String default_data_file = Enums.Paths.RESOURCES.get() + Enums.Data.JSONDATA.get();
+    private static final String default_props_file = Paths.RESOURCES.get() + Data.PROPS.get();
+    private static final String default_data_file = Paths.RESOURCES.get() + Data.JSONDATA.get();
 
     public static String getProperty(String property, String filename) {
         Properties props = new Properties();

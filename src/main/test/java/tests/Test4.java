@@ -4,6 +4,7 @@ import Pages.Form1;
 import Pages.StartPage;
 import Utils.Config;
 import aquality.selenium.browser.AqualityServices;
+import aquality.selenium.elements.interfaces.ILabel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

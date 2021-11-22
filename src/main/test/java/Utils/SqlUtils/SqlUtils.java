@@ -1,7 +1,6 @@
 package Utils.SqlUtils;
 
 import Utils.Config;
-import Utils.StringUtils;
 import org.apache.log4j.Logger;
 import java.sql.*;
 
@@ -20,40 +19,42 @@ public class SqlUtils {
         }
     }
     public static void execQuery(String query, String field) throws SQLException {
-        logger.info(StringUtils.getSeparator());
         setUp();
 
         try (Connection conn = DriverManager.getConnection(url, user, password)){
             ResultSet rs = conn.createStatement().executeQuery(query);
             while (rs.next()) {
-                String log = "   |   " + rs.getObject(field) + "   |   " + "\n-----------------";
-                logger.info(log);
+                String row_pattern = "|  %-20s |";
+                String separator = new String(new char[25]).replace("\0", "-");
+                String row = String.format(row_pattern, rs.getObject(field));
+                logger.info(row + '\n' + separator);
             }
         }
     }
     public static void execQuery(String query, String field1, String field2) throws SQLException {
-        logger.info(StringUtils.getSeparator());
         setUp();
 
         try (Connection conn = DriverManager.getConnection(url, user, password)){
             ResultSet rs = conn.createStatement().executeQuery(query);
             while (rs.next()) {
-                String log = rs.getObject(field1) + "   |   " + rs.getObject(field2);
-                logger.info(log);
+                String row_pattern = "|  %-20s |  %-20s |";
+                String separator = new String(new char[49]).replace("\0", "-");
+                String row = String.format(row_pattern, rs.getObject(field1), rs.getObject(field2));
+                logger.info(row + '\n' + separator);
             }
         }
     }
 
     public static void execQuery(String query, String field1, String field2, String field3) throws SQLException {
-        logger.info(StringUtils.getSeparator());
         setUp();
 
         try (Connection conn = DriverManager.getConnection(url, user, password)){
             ResultSet rs = conn.createStatement().executeQuery(query);
             while (rs.next()) {
-                String log = rs.getObject(field1) + "   |   " + rs.getObject(field2) + "   |   " + rs.getObject(field3)
-                        + "\n-----------------------------------------------------------";
-                logger.info(log);
+                String row_pattern = "|  %-30s |  %-150s |  %-30s |";
+                String separator = new String(new char[223]).replace("\0", "-");
+                String row = String.format(row_pattern, rs.getObject(field1), rs.getObject(field2), rs.getObject(field3));
+                logger.info(row + '\n' + separator);
             }
         }
     }

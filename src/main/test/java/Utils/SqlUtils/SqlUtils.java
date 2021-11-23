@@ -25,7 +25,8 @@ public class SqlUtils {
             ResultSet rs = conn.createStatement().executeQuery(query);
             while (rs.next()) {
                 String row_pattern = "|  %-20s |";
-                String separator = new String(new char[25]).replace("\0", "-");
+                int table_width = 25;
+                String separator = new String(new char[table_width]).replace("\0", "-");
                 String row = String.format(row_pattern, rs.getObject(field));
                 logger.info(row + '\n' + separator);
             }
@@ -38,7 +39,8 @@ public class SqlUtils {
             ResultSet rs = conn.createStatement().executeQuery(query);
             while (rs.next()) {
                 String row_pattern = "|  %-20s |  %-20s |";
-                String separator = new String(new char[49]).replace("\0", "-");
+                int table_width = 49;
+                String separator = new String(new char[table_width]).replace("\0", "-");
                 String row = String.format(row_pattern, rs.getObject(field1), rs.getObject(field2));
                 logger.info(row + '\n' + separator);
             }
@@ -52,7 +54,8 @@ public class SqlUtils {
             ResultSet rs = conn.createStatement().executeQuery(query);
             while (rs.next()) {
                 String row_pattern = "|  %-30s |  %-150s |  %-30s |";
-                String separator = new String(new char[223]).replace("\0", "-");
+                int table_width = 223;
+                String separator = new String(new char[table_width]).replace("\0", "-");
                 String row = String.format(row_pattern, rs.getObject(field1), rs.getObject(field2), rs.getObject(field3));
                 logger.info(row + '\n' + separator);
             }

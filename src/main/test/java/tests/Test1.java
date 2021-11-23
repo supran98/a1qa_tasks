@@ -1,8 +1,8 @@
 package tests;
 
-import Pages.Form1;
-import Pages.Form2;
-import Pages.Form3;
+import Pages.FirstForm;
+import Pages.SecondForm;
+import Pages.ThirdForm;
 import Pages.StartPage;
 import Utils.Config;
 import aquality.selenium.browser.AqualityServices;
@@ -19,18 +19,18 @@ public class Test1 extends BaseTest {
         Assert.assertTrue(start_page.isDisplayed(), "Start page not displayed\n");
         start_page.startSession();
 
-        Form1 form1 = new Form1();
-        Assert.assertTrue(form1.isDisplayed(), "First form not displayed\n");
-        form1.fill();
-        form1.goToNextForm();
+        FirstForm first_form = new FirstForm();
+        Assert.assertTrue(first_form.isDisplayed(), "First form not displayed\n");
+        first_form.fill();
+        first_form.goToNextForm();
 
-        Form2 form2 = new Form2();
-        Assert.assertTrue(form2.isDisplayed(), "Second form not displayed\n");
-        form2.ChooseInterests();
-        form2.upload_avatar();
-        form2.goToNextForm();
+        SecondForm second_form = new SecondForm();
+        Assert.assertTrue(second_form.isDisplayed(), "Second form not displayed\n");
+        second_form.ChooseInterests();
+        second_form.upload_avatar();
+        second_form.goToNextForm();
 
-        Form3 form3 = new Form3();
-        Assert.assertTrue(form3.isDisplayed(), "Third form not displayed\n");
+        ThirdForm third_form = new ThirdForm();
+        Assert.assertTrue(third_form.isDisplayed(), "Third form not displayed\n");
     }
 }

@@ -2,14 +2,24 @@ package Pages;
 
 import Utils.DialogRobot;
 import aquality.selenium.browser.AqualityServices;
+import aquality.selenium.core.waitings.IConditionalWait;
+import aquality.selenium.elements.interfaces.IElementFactory;
 import org.openqa.selenium.By;
 
-public class Form2 extends BaseForm {
+public class SecondForm {
+    private static IElementFactory elementFactory = AqualityServices.getElementFactory();
+
     private final String page_indicator_xpath = "//div[text() = '2 / 4']";
     private final String upload_link_xpath = "//a[@class = 'avatar-and-interests__upload-button']";
     private final String checkboxes_xpath = "(//span[@class = 'icon icon-check checkbox__check'])[%s]";
     private final String button_next_xpath = "//button[@class = 'button button--stroked button--white button--fluid']";
     private final String download_img_btn_xpath = "//button[text() = 'Download image']";
+
+    private final IConditionalWait waiter = AqualityServices.getConditionalWait();
+    private final int dialog_timeout = 2000;
+    private final int manual_input_timeout = 20000;
+    private final int checkboxes_to_uncheck = 17;
+    private final int scroll_value = 300;
 
     public boolean isDisplayed() {
         return elementFactory.getLabel(By.xpath(page_indicator_xpath), "indicator").state().isDisplayed();
@@ -21,9 +31,8 @@ public class Form2 extends BaseForm {
         addFileFromDialogWindow();
     }
     public void ChooseInterests() {
-        AqualityServices.getBrowser().scrollWindowBy(0, 300);
+        AqualityServices.getBrowser().scrollWindowBy(0, scroll_value);
 
-        final int checkboxes_to_uncheck = 17;
         for (int i=1; i<checkboxes_to_uncheck; i++) {
             String locator = String.format(checkboxes_xpath, i);
             elementFactory.getCheckBox(By.xpath(locator), "cb").click();
@@ -40,28 +49,32 @@ public class Form2 extends BaseForm {
 
     }
     private void handleLinuxDialogWindow() {
-        try {
-            DialogRobot.addToClipBoard("Pictures");
-            DialogRobot.openSearchBar();
-            DialogRobot.paste();
-            DialogRobot.pressEnter();
-            Thread.sleep(1000);
-            DialogRobot.pressEnter();
-            Thread.sleep(1000);
-            DialogRobot.pressEnter();
-            Thread.sleep(1000);
-            DialogRobot.pressEnter();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        synchronized (waiter) {
+            try {
+                DialogRobot.addToClipBoard("Pictures");
+                DialogRobot.openSearchBar();
+                DialogRobot.paste();
+                DialogRobot.pressEnter();
+
+                DialogRobot.pressEnter();
+                waiter.wait(dialog_timeout);
+                DialogRobot.pressEnter();
+                waiter.wait(dialog_timeout);
+                DialogRobot.pressEnter();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
     private void handleDialogWindow() {
-        try {
-            DialogRobot.addToClipBoard("please, choose an image manually");
-            DialogRobot.paste();
-            Thread.sleep(15000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        synchronized (waiter) {
+            try {
+                DialogRobot.addToClipBoard("please, choose an image manually");
+                DialogRobot.paste();
+                waiter.wait(manual_input_timeout);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
     private void downloadDefaultImage() {

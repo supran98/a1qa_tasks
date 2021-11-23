@@ -1,10 +1,9 @@
 package tests;
 
-import Pages.Form1;
+import Pages.FirstForm;
 import Pages.StartPage;
 import Utils.Config;
 import aquality.selenium.browser.AqualityServices;
-import aquality.selenium.elements.interfaces.ILabel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,8 +18,8 @@ public class Test4 extends BaseTest {
         Assert.assertTrue(start_page.isDisplayed(), "Start page not displayed\n");
         start_page.startSession();
 
-        Form1 form1 = new Form1();
-        Assert.assertTrue(form1.isDisplayed(), "First form not displayed\n");
-        Assert.assertEquals(form1.getTimerValue(), initial_timer_value, "Unexpected timer value returned\n");
+        FirstForm first_form = new FirstForm();
+        Assert.assertTrue(first_form.isDisplayed(), "First form not displayed\n");
+        Assert.assertEquals(first_form.getTimerValue(), initial_timer_value, "Unexpected timer value returned\n");
     }
 }

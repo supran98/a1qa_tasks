@@ -1,6 +1,6 @@
 package tests;
 
-import Pages.Form1;
+import Pages.FirstForm;
 import Pages.StartPage;
 import Utils.Config;
 import aquality.selenium.browser.AqualityServices;
@@ -17,8 +17,8 @@ public class Test2 extends BaseTest {
         Assert.assertTrue(start_page.isDisplayed(), "Start page not displayed\n");
         start_page.startSession();
 
-        Form1 form1 = new Form1();
-        Assert.assertTrue(form1.isDisplayed(), "First form not displayed\n");
-        Assert.assertTrue(form1.hideHelpForm(), "Help form not hidden\n");
+        FirstForm first_form = new FirstForm();
+        Assert.assertTrue(first_form.isDisplayed(), "First form not displayed\n");
+        Assert.assertTrue(first_form.hideHelpForm(), "Help form not hidden\n");
     }
 }

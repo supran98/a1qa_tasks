@@ -18,7 +18,7 @@ public class Test2 extends BaseTest {
         start_page.startSession();
 
         FirstForm first_form = new FirstForm();
-        Assert.assertTrue(first_form.isDisplayed(), "First form not displayed\n");
+        Assert.assertTrue(first_form.state().isDisplayed(), "First form not displayed\n");
         Assert.assertTrue(first_form.hideHelpForm(), "Help form not hidden\n");
     }
 }

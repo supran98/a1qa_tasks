@@ -1,17 +1,17 @@
 package Pages;
 
+import Utils.Config;
 import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.elements.interfaces.IButton;
 import aquality.selenium.elements.interfaces.IElementFactory;
+import aquality.selenium.forms.Form;
 import com.github.curiousoddman.rgxgen.RgxGen;
 import org.openqa.selenium.By;
-
 import java.time.Duration;
 
-public class FirstForm {
+public class FirstForm extends Form {
     private static IElementFactory elementFactory = AqualityServices.getElementFactory();
 
-    private final String page_indicator_xpath = "//div[text() = '1 / 4']";
     private final String password_field_xpath = "//input[@placeholder = 'Choose Password']";
     private final String email_field_xpath = "//input[@placeholder = 'Your email']";
     private final String domain_field_xpath = "//input[@placeholder = 'Domain']";
@@ -29,22 +29,19 @@ public class FirstForm {
     private final String email = new RgxGen(email_pattern).generate();
     private final String domain = "any";
 
-    private final int wait_element_timeout = 15;
-    private final int wait_element_interval = 1000;
+    private final int wait_element_timeout = Integer.parseInt(Config.getProperty("wait_element_timeout"));
+    private final int wait_element_interval = Integer.parseInt(Config.getProperty("wait_element_interval"));
 
-    public boolean isDisplayed() {
-        return elementFactory.getLabel(By.xpath(page_indicator_xpath), "indicator").state().isDisplayed();
+    public FirstForm() {
+        super(By.xpath("//div[text() = '1 / 4']"), "page_indicator");
     }
+
     public void fill() {
         elementFactory.getTextBox(By.xpath(password_field_xpath), "password_field").clearAndType(password);
-
         elementFactory.getTextBox(By.xpath(email_field_xpath), "email_field").clearAndType(email);
-
         elementFactory.getTextBox(By.xpath(domain_field_xpath), "domain_field").clearAndType(domain);
-
         elementFactory.getComboBox(By.xpath(combo_box_xpath), "combo_box").click();
         elementFactory.getLabel(By.xpath(combo_box_item_xpath), "cb_item").click();
-
         elementFactory.getCheckBox(By.xpath(check_box_xpath), "no_accept_checkbox").click();
     }
     public boolean hideHelpForm() {

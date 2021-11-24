@@ -14,11 +14,11 @@ public class Test3 extends BaseTest {
     public void Run() {
         AqualityServices.getBrowser().getDriver().get(url);
         StartPage start_page = new StartPage();
-        Assert.assertTrue(start_page.isDisplayed(), "Start page not displayed\n");
+        Assert.assertTrue(start_page.state().isDisplayed(), "Start page not displayed\n");
         start_page.startSession();
 
         FirstForm first_form = new FirstForm();
-        Assert.assertTrue(first_form.isDisplayed(), "First form not displayed\n");
+        Assert.assertTrue(first_form.state().isDisplayed(), "First form not displayed\n");
         Assert.assertTrue(first_form.agreeCookies(), "Cookies form not found\n");
     }
 }

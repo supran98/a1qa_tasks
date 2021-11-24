@@ -16,21 +16,21 @@ public class Test1 extends BaseTest {
     public void Run() {
         StartPage start_page = new StartPage();
         AqualityServices.getBrowser().getDriver().get(url);
-        Assert.assertTrue(start_page.isDisplayed(), "Start page not displayed\n");
+        Assert.assertTrue(start_page.state().isDisplayed(), "Start page not displayed\n");
         start_page.startSession();
 
         FirstForm first_form = new FirstForm();
-        Assert.assertTrue(first_form.isDisplayed(), "First form not displayed\n");
+        Assert.assertTrue(first_form.state().isDisplayed(), "First form not displayed\n");
         first_form.fill();
         first_form.goToNextForm();
 
         SecondForm second_form = new SecondForm();
-        Assert.assertTrue(second_form.isDisplayed(), "Second form not displayed\n");
+        Assert.assertTrue(second_form.state().isDisplayed(), "Second form not displayed\n");
         second_form.ChooseInterests();
         second_form.upload_avatar();
         second_form.goToNextForm();
 
         ThirdForm third_form = new ThirdForm();
-        Assert.assertTrue(third_form.isDisplayed(), "Third form not displayed\n");
+        Assert.assertTrue(third_form.state().isDisplayed(), "Third form not displayed\n");
     }
 }

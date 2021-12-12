@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+<<<<<<< HEAD
+    <test name="sqltest">
+        <classes>
+            <class name="tests.Test1"/>
+            <class name="tests.Test2"/>
+            <class name="tests.Test3"/>
+            <class name="tests.Test4"/>
+=======
+    <test name="task5">
+        <classes>
+            <class name="tests.CompareTest"/>
+>>>>>>> bd5cafb90ebe83f35dc6c6bda9e1fea886f2fce4
+        </classes>
+    </test>
+</suite>
